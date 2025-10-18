@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNCO - Powering Every Connection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #39FF14;
+            box-shadow: 0 4px 20px rgba(57, 255, 20, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #39FF14;
+            text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #39FF14;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            padding: 8rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #39FF14;
+            text-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(57, 255, 20, 0.5); }
+            to { text-shadow: 0 0 40px rgba(57, 255, 20, 0.8); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            color: #39FF14;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #39FF14;
+            color: #000000;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #2dd40f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 40px rgba(57, 255, 20, 0.6);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: #000000;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #39FF14;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(57, 255, 20, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #39FF14;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 5%;
+            background: #0a0a0a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #39FF14;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #333;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: #39FF14;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(57, 255, 20, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            color: #39FF14;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .order-button {
+            display: block;
+            background: #39FF14;
+            color: #000000;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .order-button:hover {
+            background: #2dd40f;
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            background: #000000;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #39FF14;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        .mission-promise {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #39FF14;
+        }
+
+        .mission-box h3 {
+            color: #39FF14;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            background: #0a0a0a;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #39FF14;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 30px rgba(57, 255, 20, 0.3);
+        }
+
+        .contact-item a {
+            color: #39FF14;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 2px solid #39FF14;
+        }
+
+        footer p {
+            color: #cccccc;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ZYNCO</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ZYNCO</h1>
+            <p>Powering Every Connection</p>
+            <p style="font-size: 1.2rem; color: #888;">Smart. Sleek. Connected.</p>
+            <div class="hero-features">
+                <span>🚚 Islandwide Delivery</span>
+                <span>💬 WhatsApp Orders</span>
+                <span>⚡ Premium Quality</span>
+            </div>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔋</div>
+                <h3>Premium Quality Accessories</h3>
+                <p>Top-tier tech accessories designed for performance and durability</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Islandwide Delivery</h3>
+                <p>Fast and reliable delivery across Sri Lanka</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Fast & Friendly Support</h3>
+                <p>Quick responses and customer-first service</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">⚡</div>
+                <div class="product-info">
+                    <h3 class="product-name">Fast Charger</h3>
+                    <p class="product-price">Rs. 1,250</p>
+                    <a href="https://wa.me/94771234567?text=Hi%20Zynco!%20I%20want%20to%20order%20the%20Fast%20Charger" class="order-button">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🔌</div>
+                <div class="product-info">
+                    <h3 class="product-name">Type-C Cable</h3>
+                    <p class="product-price">Rs. 950</p>
+                    <a href="https://wa.me/94771234567?text=Hi%20Zynco!%20I%20want%20to%20order%20the%20Type-C%20Cable" class="order-button">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <h3 class="product-name">Bluetooth Earphones</h3>
+                    <p class="product-price">Rs. 3,200</p>
+                    <a href="https://wa.me/94771234567?text=Hi%20Zynco!%20I%20want%20to%20order%20the%20Bluetooth%20Earphones" class="order-button">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <h3 class="product-name">Phone Case</h3>
+                    <p class="product-price">Rs. 1,500</p>
+                    <a href="https://wa.me/94771234567?text=Hi%20Zynco!%20I%20want%20to%20order%20the%20Phone%20Case" class="order-button">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🔋</div>
+                <div class="product-info">
+                    <h3 class="product-name">Power Bank</h3>
+                    <p class="product-price">Rs. 4,500</p>
+                    <a href="https://wa.me/94771234567?text=Hi%20Zynco!%20I%20want%20to%20order%20the%20Power%20Bank" class="order-button">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🖱️</div>
+                <div class="product-info">
+                    <h3 class="product-name">Wireless Mouse</h3>
+                    <p class="product-price">Rs. 2,800</p>
+                    <a href="https://wa.me/94771234567?text=Hi%20Zynco!%20I%20want%20to%20order%20the%20Wireless%20Mouse" class="order-button">Order via WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Zynco</h2>
+            <p>Zynco is a modern tech brand dedicated to bringing you the best in mobile accessories — fast chargers, cables, earphones, and more.</p>
+            <p>We believe technology should be sleek, reliable, and affordable.</p>
+            
+            <div class="mission-promise">
+                <div class="mission-box">
+                    <h3>💡 Our Mission</h3>
+                    <p>Powering every connection with cutting-edge technology</p>
+                </div>
+                <div class="mission-box">
+                    <h3>💬 Our Promise</h3>
+                    <p>Smart products. Trusted quality. Exceptional service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-methods">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <a href="https://wa.me/94771234567">WhatsApp Chat</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📩</div>
+                    <a href="mailto:zynco.lk@gmail.com">zynco.lk@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📷</div>
+                    <a href="https://instagram.com/zynco.lk">@zynco.lk</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📘</div>
+                    <a href="https://facebook.com/zynco.lk">Zynco LK</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Zynco | All Rights Reserved | Islandwide Delivery</p>
+    </footer>
+</body>
+</html>
